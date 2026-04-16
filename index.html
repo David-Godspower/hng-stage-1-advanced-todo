@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Ajala | HNG14 Stage 1A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .done-state { text-decoration: line-through; color: #9ca3af; }
+        .priority-high { border-left: 6px solid #ef4444; }
+        .priority-medium { border-left: 6px solid #f59e0b; }
+        .priority-low { border-left: 6px solid #10b981; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-[#f1f5f9] flex items-center justify-center min-h-screen p-4 font-sans">
+
+    <article data-testid="test-todo-card" id="todo-card" class="bg-white w-full max-w-md rounded-3xl shadow-xl p-8 transition-all border-l-8 priority-high">
+        
+        <div id="view-mode">
+            <div class="flex justify-between items-start mb-4">
+                <div class="space-y-1">
+                    <h2 data-testid="test-todo-title" id="display-title" class="text-2xl font-bold text-slate-800">HNG Stage 1</h2>
+                    <div data-testid="test-todo-priority-indicator" id="priority-dot" class="w-3 h-3 rounded-full bg-rose-500"></div>
+                </div>
+                <input type="checkbox" data-testid="test-todo-complete-toggle" id="complete-checkbox" class="w-6 h-6 rounded-full cursor-pointer" onclick="toggleComplete()">
+            </div>
+
+            <div data-testid="test-todo-collapsible-section" id="collapsible-section" class="mb-4">
+                <p data-testid="test-todo-description" id="display-description" class="text-slate-600 text-sm"></p>
+            </div>
+            <button data-testid="test-todo-expand-toggle" onclick="toggleExpand()" id="expand-btn" class="text-xs text-indigo-600 font-bold mb-4">Show More</button>
+
+            <div class="flex gap-2 mb-6">
+                <span data-testid="test-todo-priority" id="display-priority" class="px-3 py-1 bg-slate-100 text-[10px] font-black uppercase rounded-lg">High</span>
+                <span data-testid="test-todo-status" id="display-status" class="px-3 py-1 bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase rounded-lg">Pending</span>
+                <span data-testid="test-todo-overdue-indicator" id="overdue-badge" class="hidden px-3 py-1 bg-red-600 text-white text-[10px] font-black uppercase rounded-lg">Overdue</span>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 mb-6 space-y-2">
+                <time data-testid="test-todo-due-date" id="display-due-date" class="block text-xs font-bold text-slate-500 uppercase"></time>
+                <time data-testid="test-todo-time-remaining" id="display-time-remaining" class="block text-xs font-bold text-indigo-600 italic"></time>
+            </div>
+
+            <ul data-testid="test-todo-tags" class="flex gap-2 mb-6">
+                <li data-testid="test-todo-tag-work" class="text-[11px] text-slate-400">#work</li>
+                <li data-testid="test-todo-tag-urgent" class="text-[11px] text-slate-400">#urgent</li>
+            </ul>
+
+            <div class="flex justify-between border-t pt-4">
+                <button data-testid="test-todo-edit-button" onclick="enterEditMode()" class="text-slate-400 hover:text-indigo-600 font-bold text-sm">Edit</button>
+                <button data-testid="test-todo-delete-button" onclick="alert('Delete clicked')" class="text-slate-400 hover:text-rose-600 font-bold text-sm">Delete</button>
+            </div>
+        </div>
+
+        <form data-testid="test-todo-edit-form" id="edit-mode" class="hidden space-y-4">
+            <h3 class="text-lg font-bold text-slate-800">Edit Task</h3>
+            <input data-testid="test-todo-edit-title-input" id="edit-title" type="text" class="w-full p-2 border rounded-lg">
+            <textarea data-testid="test-todo-edit-description-input" id="edit-desc" class="w-full p-2 border rounded-lg"></textarea>
+            
+            <div class="flex gap-2">
+                <select data-testid="test-todo-edit-priority-select" id="edit-priority" class="w-1/2 p-2 border rounded-lg">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <select data-testid="test-todo-status-control" id="edit-status" class="w-1/2 p-2 border rounded-lg">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Done">Done</option>
+                </select>
+            </div>
+            
+            <input type="datetime-local" data-testid="test-todo-edit-due-date-input" id="edit-due-date" class="w-full p-2 border rounded-lg">
+            
+            <div class="flex gap-2 pt-2">
+                <button data-testid="test-todo-save-button" type="button" onclick="saveTask()" class="flex-1 bg-indigo-600 text-white p-2 rounded-lg font-bold">Save</button>
+                <button data-testid="test-todo-cancel-button" type="button" onclick="exitEditMode()" class="flex-1 bg-slate-200 p-2 rounded-lg font-bold">Cancel</button>
+            </div>
+        </form>
+
+    </article>
+
+    <script src="script.js"></script>
+</body>
+</html>
