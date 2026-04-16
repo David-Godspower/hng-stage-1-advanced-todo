@@ -48,8 +48,8 @@
             </ul>
 
             <div class="flex justify-between border-t pt-4">
-                <button data-testid="test-todo-edit-button" onclick="enterEditMode()" class="text-slate-400 hover:text-indigo-600 font-bold text-sm">Edit</button>
-                <button data-testid="test-todo-delete-button" onclick="alert('Delete clicked')" class="text-slate-400 hover:text-rose-600 font-bold text-sm">Delete</button>
+                <button data-testid="test-todo-edit-button" id="edit-btn" onclick="enterEditMode()" class="text-slate-400 hover:text-indigo-600 font-bold text-sm">Edit</button>
+               <button data-testid="test-todo-delete-button" id="delete-btn" onclick="handleDelete()" class="text-slate-400 hover:text-rose-600 font-bold text-sm transition-colors">Delete</button>
             </div>
         </div>
 
