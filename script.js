@@ -111,6 +111,14 @@ function saveTask() {
     render();
 }
 
+function handleDelete() {
+    const confirmDelete = confirm("Are you sure you want to delete this task?");
+    
+    if (confirmDelete) {
+        alert("Task deleted successfully!");
+        console.log("Delete action confirmed for task:", task.title);
+    }
+}
 
 setInterval(updateTimeLogic, 30000);
 render();
